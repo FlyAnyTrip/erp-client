@@ -1,0 +1,606 @@
+/* ============================================
+   GLASSMORPHISM LOGIN STYLES
+   Modern, Clean, Professional Design
+   ============================================ */
+
+.login-container {
+  /* Full viewport with background image and overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%),
+    url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80")
+    center / cover no-repeat;
+  background-blend-mode: overlay;
+  background-attachment: fixed;
+  padding: 1.5rem;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Glassmorphic wrapper with backdrop blur */
+.login-form-wrapper {
+  width: 100%;
+  max-width: 420px;
+  animation: fadeInScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  perspective: 1000px;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Glassmorphic card with backdrop blur effect */
+.login-form {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle animated gradient background */
+.login-form::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), transparent);
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translate(-100%, -100%) rotate(0deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(360deg);
+  }
+}
+
+/* Form header with welcoming text */
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.form-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Error alert with icon */
+.alert {
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  animation: slideDown 0.3s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #991b1b;
+}
+
+.alert-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Form fields container */
+.login-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  display: block;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Input wrapper for consistent styling */
+.input-wrapper {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1f2937;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Input focus state with smooth transition */
+.form-input:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.form-input:hover {
+  border-color: #d1d5db;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Primary submit button with hover effect */
+.btn-submit {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.btn-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.btn-submit:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Loading spinner animation */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form footer with toggle link */
+.form-footer {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-text {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.toggle-link {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.toggle-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #667eea;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-link:hover {
+  color: #764ba2;
+}
+
+.toggle-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.toggle-link:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Interactive gradient and social icons section */
+.interactive-gradient {
+  position: absolute;
+  pointer-events: none;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(to right, rgba(147, 112, 219, 0.3), rgba(59, 130, 246, 0.3), rgba(236, 72, 153, 0.3));
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 1;
+  transition: transform 0.1s ease-out;
+}
+
+.form-content {
+  position: relative;
+  z-index: 10;
+}
+
+.social-container {
+  margin: 1.5rem 0;
+}
+
+.social-icons-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icon-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #667eea;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: #1f2937;
+}
+
+.social-icon-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.social-icon-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #667eea;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.social-icon-link:hover .social-icon-bg {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.social-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #667eea;
+}
+
+.social-icon-link:hover .social-icon {
+  color: white;
+}
+
+.social-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Divider text styling */
+.divider-text {
+  display: block;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 640px) {
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-form-wrapper {
+    max-width: 100%;
+  }
+
+  .login-form {
+    padding: 2rem 1.5rem;
+    border-radius: 14px;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .form-input {
+    font-size: 16px;
+  }
+
+  .btn-submit {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+
+  .toggle-text {
+    font-size: 0.85rem;
+  }
+
+  .social-icons-list {
+    gap: 0.75rem;
+  }
+
+  .social-icon-link {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .social-icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form-wrapper {
+    max-width: 100%;
+  }
+
+  .login-form {
+    padding: 1.75rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .form-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .login-form-fields {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-input {
+    padding: 0.75rem 0.875rem;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .btn-submit {
+    padding: 0.8rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY FEATURES
+   ============================================ */
+
+/* High contrast focus states */
+@media (prefers-contrast: more) {
+  .form-input:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+    border-color: #667eea;
+  }
+
+  .btn-submit:focus {
+    outline: 3px solid white;
+    outline-offset: 2px;
+  }
+
+  .toggle-link:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .login-form-wrapper,
+  .form-input,
+  .btn-submit,
+  .toggle-link,
+  .alert {
+    animation: none;
+    transition: none;
+  }
+
+  .btn-submit::before {
+    display: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .login-container {
+    background: linear-gradient(135deg, #4f46e5 0%, #5b21b6 100%),
+      url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80")
+      center / cover no-repeat;
+    background-blend-mode: multiply;
+  }
+
+  .login-form {
+    background: rgba(31, 41, 55, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .form-title {
+    color: #f3f4f6;
+  }
+
+  .form-subtitle {
+    color: #d1d5db;
+  }
+
+  .form-label {
+    color: #e5e7eb;
+  }
+
+  .form-input {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+
+  .form-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .form-input:focus {
+    background: rgba(55, 65, 81, 0.95);
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .toggle-text {
+    color: #d1d5db;
+  }
+
+  .alert-error {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fecaca;
+  }
+}

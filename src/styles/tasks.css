@@ -1,0 +1,37 @@
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-pin {
+  background: none;
+  border: 2px solid #667eea;
+  color: #667eea;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-pin:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-pin.pinned {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.pinned-row {
+  background-color: #f0f4ff;
+  border-left: 4px solid #667eea;
+}
+
+.pinned-row:hover {
+  background-color: #e8ecff;
+}

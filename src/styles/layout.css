@@ -1,0 +1,53 @@
+/* ============================================
+   LAYOUT STYLES
+   ============================================ */
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-secondary);
+}
+
+/* Removed sidebar margin - no longer needed */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .content {
+    padding: var(--spacing-lg);
+  }
+}

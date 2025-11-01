@@ -1,0 +1,238 @@
+.google-sheet-card {
+  background: white;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.google-sheet-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.google-sheet-card:hover::before {
+  transform: scaleX(1);
+}
+
+.google-sheet-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.sheet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sheet-name {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a202c;
+  flex: 1;
+  word-break: break-word;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.sheet-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.sheet-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.sheet-btn:hover {
+  background: #f7fafc;
+  transform: scale(1.1);
+}
+
+.pin-btn.pinned {
+  color: #667eea;
+  background: #f0f4ff !important;
+}
+
+.pin-btn.pinned:hover {
+  background: #e6edff !important;
+  transform: scale(1.1);
+}
+
+.delete-btn:hover {
+  background: #fed7d7 !important;
+  color: #e53e3e;
+}
+
+.sheet-url {
+  color: #718096;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sheet-footer {
+  margin-top: auto;
+}
+
+.view-sheet-btn {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.view-sheet-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a42a0 100%);
+}
+
+.view-sheet-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .google-sheet-card {
+    padding: 16px;
+    gap: 14px;
+  }
+  
+  .sheet-card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .sheet-actions {
+    align-self: flex-end;
+  }
+  
+  .sheet-name {
+    font-size: 16px;
+  }
+  
+  .sheet-url {
+    font-size: 12px;
+  }
+  
+  .view-sheet-btn {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .google-sheet-card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  
+  .sheet-name {
+    font-size: 15px;
+  }
+  
+  .sheet-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+  
+  .view-sheet-btn {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+/* Animation for card appearance */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.google-sheet-card {
+  animation: cardAppear 0.4s ease-out;
+}
+
+/* Focus states for accessibility */
+.sheet-btn:focus,
+.view-sheet-btn:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Loading state */
+.google-sheet-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.google-sheet-card.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
