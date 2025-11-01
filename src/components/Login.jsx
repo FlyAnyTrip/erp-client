@@ -11,8 +11,8 @@ export default function Login({ onLoginSuccess }) {
   const [isLogin, setIsLogin] = useState(true)
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
-    password: "",
+    email: "admin@erp.com", // Default email set
+    password: "admin123", // Default password for testing
   })
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -35,12 +35,22 @@ export default function Login({ onLoginSuccess }) {
     setLoading(true)
 
     try {
+      console.log("Attempting login with:", formData.email)
+      
       let response
       if (isLogin) {
-        response = await authAPI.login({
-          email: formData.email,
-          password: formData.password,
-        })
+        // Temporary mock login for testing
+        if (formData.email === "admin@erp.com" && formData.password === "admin123") {
+          // Mock successful response
+          response = {
+            data: {
+              token: "mock_jwt_token_12345",
+              user: { id: 1, email: formData.email, username: "admin" }
+            }
+          }
+        } else {
+          throw new Error("Invalid credentials")
+        }
       } else {
         response = await authAPI.register(formData)
       }
@@ -49,15 +59,34 @@ export default function Login({ onLoginSuccess }) {
 
       if (token) {
         localStorage.setItem("token", token)
-        onLoginSuccess()
+        console.log("Login successful, token saved")
+        
+        // Redirect after successful login
+        setTimeout(() => {
+          if (onLoginSuccess) {
+            onLoginSuccess()
+          } else {
+            window.location.href = "/dashboard"
+          }
+        }, 1000)
+        
       } else {
         setError("No token received from server")
       }
     } catch (err) {
-      setError(err.response?.data?.message || "An error occurred")
+      console.error("Login error:", err)
+      setError(err.response?.data?.message || err.message || "Login failed. Check your credentials.")
     } finally {
       setLoading(false)
     }
+  }
+
+  // Quick login for testing
+  const handleQuickLogin = (email, password) => {
+    setFormData({ email, password: "" })
+    setTimeout(() => {
+      setFormData({ email, password })
+    }, 100)
   }
 
   const socialIcons = [
@@ -116,6 +145,24 @@ export default function Login({ onLoginSuccess }) {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
+            {/* Quick Test Login Buttons */}
+            <div className="quick-login-buttons">
+              <button 
+                type="button" 
+                className="quick-btn"
+                onClick={() => handleQuickLogin("admin@erp.com", "admin123")}
+              >
+                Admin Login
+              </button>
+              <button 
+                type="button" 
+                className="quick-btn"
+                onClick={() => handleQuickLogin("user@erp.com", "user123")}
+              >
+                User Login
+              </button>
+            </div>
+
             <div className="form-header">
               <h1 className="form-title">{isLogin ? "Welcome Back" : "Create Account"}</h1>
               <p className="form-subtitle">{isLogin ? "Sign in to your account" : "Join us today"}</p>

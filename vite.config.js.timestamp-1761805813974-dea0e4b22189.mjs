@@ -7,7 +7,7 @@ var vite_config_default = defineConfig({
     port: 3e3,
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "https://erp-server-jade.vercel.app/api",
         changeOrigin: true
       }
     }
